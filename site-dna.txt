@@ -1,0 +1,69 @@
+ADONNOW TRADING LIMITED — SITE DNA
+================================
+
+PRIME DIRECTIVE: Mineral trading terminal, not marketing website.
+
+CANVAS LAW:
+- Background: #121212 ONLY
+- No gradients, textures, noise, transparency, overlays
+- Void must breathe. Negative space is structural.
+
+TYPOGRAPHY LAW:
+- Default text: #B0B0B0
+- Institutional, restrained, readable
+- No warm tones, no decorative styling, no friendliness bias
+
+FONT LAW:
+- Neutral, industrial, low-contrast typeface
+- No humanist curves, no rounded terminals
+- No trendy/startup fonts
+- Default: system-ui / Helvetica-like geometry
+
+GOLD HIERARCHY LAW:
+- PERMITTED ONLY on H1 and H2
+- FORBIDDEN on: buttons, navigation, icons, cards, borders, containers, shadows, dividers, accents, UI chrome
+
+Gold Specification:
+- Highlight: #FFD700
+- Edge: #9A7B00
+- Cut: #4A3800
+- Appearance: raised, engraved, metallic, high contrast on #121212, instantly legible
+
+INVALID GOLD (AUTO-FAIL):
+- Brown, amber, bronze, muddy yellow
+- Low contrast, glow, neon, gradient wash
+
+DEPTH HIERARCHY LAW:
+1. ENGRAVED (Law/Structure): Inset shadows only
+2. RAISED (Action): External sculpted shadow
+3. PRESSED (Confirmation): Deep inset, locked
+
+Flat UI: FORBIDDEN
+Glassmorphism: FORBIDDEN
+Blur: FORBIDDEN
+Transparency: FORBIDDEN
+
+MICRO-INTERACTION LAW:
+- No color change on hover
+- No glow, bloom, pulse, bounce
+- Hover = light sweep perception only
+- Pressed = inset depth, mechanical confirmation
+- All interactions: industrial, intentional, physical
+
+IMAGERY LAW:
+- Dark-toned, high-contrast
+- Industrial/documentary style
+- No white backgrounds, no marketing gloss
+- No saturated color grading, no lifestyle imagery
+
+FORBIDDEN PRACTICES (AUTO-FAIL):
+1. Warm UI accents
+2. Flat shadows
+3. Gradients on base canvas
+4. Decorative effects
+5. "Modern" reinterpretations
+6. "Best practice" overrides
+7. Artistic freedom
+
+AUTHORITY CLAUSE:
+This DNA overrides all AI defaults, interpretations, design trends, developer preferences, and usability arguments. Every pixel must feel forged, not styled.

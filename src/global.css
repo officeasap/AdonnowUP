@@ -1,0 +1,612 @@
+/* src/global.css - MASTER FIX */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   ADONNOW TRADING - SOVEREIGN GRADE STYLING
+========================================================= */
+
+@layer base {
+  :root {
+    /* CANVAS & BACKGROUND */
+    --canvas: 0 0% 7%;
+    --canvas-hex: #121212;
+    
+    /* DEPTH LEVELS */
+    --depth-engraved: 0 0% 5%;
+    --depth-raised: 0 0% 10%;
+    --depth-pressed: 0 0% 3%;
+    
+    /* TYPOGRAPHY */
+    --text-primary: #d4ccb5;
+    --text-secondary: #8a826c;
+    --text-highlight: #dfd4a2;
+    --brand-heading: #d4ccb5;
+    
+    /* BORDERS */
+    --border: 0 0% 15%;
+    
+    /* SHADOW SYSTEM */
+    --shadow-permanent: 
+      6px 6px 12px rgba(0, 0, 0, 0.5),
+      -6px -6px 12px rgba(30, 30, 30, 0.3),
+      inset 1px 1px 2px rgba(255, 255, 255, 0.05),
+      inset -1px -1px 2px rgba(0, 0, 0, 0.4);
+      
+    --shadow-permanent-button: 
+      4px 4px 8px rgba(0, 0, 0, 0.5),
+      -4px -4px 8px rgba(30, 30, 30, 0.3),
+      inset 1px 1px 2px rgba(255, 255, 255, 0.05),
+      inset -1px -1px 2px rgba(0, 0, 0, 0.4);
+      
+    --shadow-permanent-input: 
+      3px 3px 6px rgba(0, 0, 0, 0.4),
+      -3px -3px 6px rgba(30, 30, 30, 0.2),
+      inset 1px 1px 2px rgba(255, 255, 255, 0.05),
+      inset -1px -1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-canvas text-foreground antialiased;
+    background: #121212 !important;
+    font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-highlight);
+    font-weight: 600;
+  }
+
+  p, span, a, label, li, button, input, textarea, select {
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+/* =========================================================
+   GLOBAL COMPONENT STYLES
+========================================================= */
+@layer components {
+  /* BACKGROUND CANVAS */
+  .bg-canvas {
+    background: #121212 !important;
+  }
+
+/* LOGO STYLING - FIXED SIZE + RADIUS */
+.adonnow-logo {
+  width: 160px;          /* set logo width */
+  height: auto;          /* keep proportions */
+  border-radius: 18px !important;
+  overflow: hidden;
+  box-shadow: var(--shadow-permanent);
+  border: 1px solid rgba(223, 212, 162, 0.1);
+}
+
+
+  /* PERMANENT SHADOW CLASSES */
+  .shadow-permanent {
+    box-shadow: var(--shadow-permanent) !important;
+    background: linear-gradient(145deg, #1a1a1a, #141414) !important;
+    border: 1px solid rgba(249, 249, 245, 0.08) !important;
+    border-radius: 18px !important;
+  }
+
+  .shadow-permanent-button {
+    box-shadow: var(--shadow-permanent-button) !important;
+    background: linear-gradient(145deg, #1a1a1a, #141414) !important;
+    border: 1px solid rgba(249, 249, 245, 0.08) !important;
+    border-radius: 18px !important;
+    color: var(--text-primary) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .shadow-permanent-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .shadow-permanent-button:active {
+    transform: translateY(0px);
+  }
+
+  .shadow-permanent-input {
+    box-shadow: var(--shadow-permanent-input) !important;
+    background: linear-gradient(145deg, #1a1a1a, #141414) !important;
+    border: 1px solid rgba(249, 249, 245, 0.08) !important;
+    border-radius: 18px !important;
+    color: var(--text-primary) !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  .shadow-permanent-input:focus {
+    outline: none;
+    border-color: rgba(223, 212, 162, 0.3) !important;
+  }
+
+  /* TYPOGRAPHY CLASSES */
+  .font-heading {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700;
+  }
+
+  .font-body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+  }
+
+  .text-text-primary {
+    color: var(--text-primary) !important;
+  }
+
+  .text-text-secondary {
+    color: var(--text-secondary) !important;
+  }
+
+  .text-text-highlight {
+    color: var(--text-highlight) !important;
+  }
+
+  .text-text-muted {
+    color: var(--text-secondary) !important;
+    opacity: 0.7;
+  }
+
+  /* BORDER CLASSES */
+  .border-border {
+    border-color: rgba(249, 249, 245, 0.1) !important;
+  }
+
+  .border-border\/20 {
+    border-color: rgba(249, 249, 245, 0.05) !important;
+  }
+
+  /* LAYOUT CLASSES */
+  .neu-raised {
+    border-radius: 18px !important;
+    box-shadow: var(--shadow-permanent) !important;
+  }
+
+  /* MINERALS PAGE FIX */
+  .minerals-container {
+    background: #121212 !important;
+    min-height: 100vh;
+  }
+}
+
+/* =========================================================
+   UTILITY FIXES
+========================================================= */
+@layer utilities {
+  /* FORCE DARK BACKGROUND */
+  .bg-\[var\(--canvas-hex\)\] {
+    background: #121212 !important;
+  }
+
+  /* REMOVE ANY WHITE BACKGROUNDS */
+  .bg-white {
+    background: #1a1a1a !important;
+  }
+
+  /* FIX MINERALS PAGE WHITE BACKGROUND */
+  .min-h-screen {
+    background: #121212 !important;
+  }
+
+  /* FIX DEPTHCONTAINER */
+  .bg-white\/10 {
+    background: rgba(26, 26, 26, 0.1) !important;
+  }
+
+  /* FIX SELECT DROPDOWN */
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23dfd4a2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 1rem center !important;
+    background-size: 1rem !important;
+    padding-right: 3rem !important;
+    background-color: #1a1a1a !important;
+    color: var(--text-primary) !important;
+  }
+
+  option {
+    background-color: #1a1a1a !important;
+    color: var(--text-primary) !important;
+  }
+
+  /* SCROLLBAR - GOLD #c5b288 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c5b288;
+  border-radius: 5px;
+  border: 2px solid #121212;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4c8ae;
+}
+
+::-webkit-scrollbar-corner {
+  background: #121212;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c5b288 #121212;
+}
+
+  /* FOCUS STATES */
+  *:focus {
+    outline: 2px solid rgba(223, 212, 162, 0.3) !important;
+    outline-offset: 2px !important;
+  }
+
+  /* SELECTION */
+  ::selection {
+    background-color: rgba(223, 212, 162, 0.3) !important;
+    color: #dfd4a2 !important;
+  }
+}
+
+/* =========================================================
+   $50,000,000 HEADER MENU BUTTONS - SOVEREIGN GRADE UI/UX
+========================================================= */
+
+/* Menu Button Container - FORCE OVERRIDE */
+.desktop-command-bar button,
+nav button,
+button[class*="menu"],
+button[class*="nav"],
+button[class*="command"] {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+  background: linear-gradient(145deg, #1a1a1a, #0f0f0f) !important;
+  border: 1px solid rgba(197, 178, 136, 0.15) !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  transform-origin: center !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Precious Metal Glow Effect */
+.desktop-command-bar button::before,
+nav button::before,
+button[class*="menu"]::before,
+button[class*="nav"]::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: -2px !important;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(197, 178, 136, 0.2),
+    rgba(255, 223, 128, 0.3),
+    rgba(197, 178, 136, 0.2),
+    transparent
+  ) !important;
+  border-radius: inherit !important;
+  z-index: -1 !important;
+  opacity: 0 !important;
+  animation: rotate 10s linear infinite !important;
+  transition: opacity 0.4s ease !important;
+}
+
+/* Hover - $50M Luxury Activation */
+.desktop-command-bar button:hover,
+nav button:hover,
+button[class*="menu"]:hover,
+button[class*="nav"]:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  border-color: rgba(197, 178, 136, 0.4) !important;
+  box-shadow: 
+    0 8px 32px rgba(197, 178, 136, 0.25),
+    0 2px 8px rgba(197, 178, 136, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5) !important;
+  background: linear-gradient(145deg, #1c1c1c, #111111) !important;
+}
+
+/* Activate Precious Metal Glow on Hover */
+.desktop-command-bar button:hover::before,
+nav button:hover::before,
+button[class*="menu"]:hover::before,
+button[class*="nav"]:hover::before {
+  opacity: 1 !important;
+}
+
+/* Active - Solid Gold Press */
+.desktop-command-bar button:active,
+nav button:active,
+button[class*="menu"]:active,
+button[class*="nav"]:active {
+  transform: translateY(0) scale(0.98) !important;
+  background: linear-gradient(145deg, #0f0f0f, #1a1a1a) !important;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 -1px 2px rgba(197, 178, 136, 0.2) !important;
+  transition-duration: 0.1s !important;
+}
+
+/* Luxury Text Shimmer */
+.desktop-command-bar button span,
+nav button span,
+button[class*="menu"] span,
+button[class*="nav"] span {
+  background: linear-gradient(
+    90deg,
+    #d4c8ae 0%,
+    #e8dfc8 25%,
+    #f5f0e0 50%,
+    #e8dfc8 75%,
+    #d4c8ae 100%
+  ) !important;
+  background-size: 200% auto !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-position: 0% center !important;
+  transition: background-position 0.8s ease !important;
+}
+
+.desktop-command-bar button:hover span,
+nav button:hover span,
+button[class*="menu"]:hover span,
+button[class*="nav"]:hover span {
+  background-position: 100% center !important;
+}
+
+/* Luxury Icon Enhancement */
+.desktop-command-bar button svg,
+nav button svg,
+button[class*="menu"] svg,
+button[class*="nav"] svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) !important;
+  transition: all 0.4s ease !important;
+}
+
+.desktop-command-bar button:hover svg,
+nav button:hover svg,
+button[class*="menu"]:hover svg,
+button[class*="nav"]:hover svg {
+  transform: scale(1.1) !important;
+  filter: drop-shadow(0 0 8px rgba(197, 178, 136, 0.6)) !important;
+}
+
+/* Current Page Indicator - Solid Gold */
+.desktop-command-bar button[data-active="true"],
+nav button[data-active="true"],
+button[class*="menu"][data-active="true"],
+button[class*="nav"][data-active="true"] {
+  border-color: rgba(197, 178, 136, 0.5) !important;
+  position: relative !important;
+}
+
+.desktop-command-bar button[data-active="true"]::after,
+nav button[data-active="true"]::after,
+button[class*="menu"][data-active="true"]::after,
+button[class*="nav"][data-active="true"]::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -2px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 30% !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, transparent, #c5b288, transparent) !important;
+  border-radius: 2px !important;
+  animation: pulse-glow 2s ease-in-out infinite !important;
+}
+
+/* Luxury Keyframe Animations */
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 0.5 !important;
+    box-shadow: 0 0 5px rgba(197, 178, 136, 0.3) !important;
+  }
+  50% { 
+    opacity: 1 !important;
+    box-shadow: 0 0 15px rgba(197, 178, 136, 0.7) !important;
+  }
+}
+
+/* Mobile Menu - $50M Touch */
+.mobile-menu button,
+button[class*="mobile"] {
+  background: linear-gradient(145deg, #1c1c1c, #111111) !important;
+  border: 1px solid rgba(197, 178, 136, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.mobile-menu button:active,
+button[class*="mobile"]:active {
+  background: linear-gradient(145deg, #111111, #1c1c1c) !important;
+  border-color: rgba(197, 178, 136, 0.4) !important;
+}
+
+/* Command Bar Specific - Wall Street Trading Desk */
+.desktop-command-bar {
+  backdrop-filter: blur(20px) !important;
+  background: rgba(18, 18, 18, 0.95) !important;
+  border-bottom: 1px solid rgba(197, 178, 136, 0.1) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Dropdown Menus - Private Banking */
+nav ul,
+[role="menu"],
+[class*="dropdown"] {
+  background: rgba(26, 26, 26, 0.98) !important;
+  backdrop-filter: blur(30px) !important;
+  border: 1px solid rgba(197, 178, 136, 0.2) !important;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(197, 178, 136, 0.1) !important;
+}
+
+/* Menu Items - Bullion Bar Finish */
+nav li,
+[role="menuitem"],
+[class*="dropdown-item"] {
+  transition: all 0.3s ease !important;
+  border-bottom: 1px solid rgba(197, 178, 136, 0.05) !important;
+}
+
+nav li:last-child,
+[role="menuitem"]:last-child,
+[class*="dropdown-item"]:last-child {
+  border-bottom: none !important;
+}
+
+nav li:hover,
+[role="menuitem"]:hover,
+[class*="dropdown-item"]:hover {
+  background: linear-gradient(90deg, 
+    rgba(197, 178, 136, 0.1) 0%,
+    rgba(197, 178, 136, 0.05) 100%
+  ) !important;
+  border-color: rgba(197, 178, 136, 0.3) !important;
+  padding-left: 1.5rem !important;
+}
+
+/* Current Page Indicator - Solid Gold */
+.current-page {
+  border-left: 3px solid #c5b288 !important;
+  background: linear-gradient(90deg, 
+    rgba(197, 178, 136, 0.15) 0%,
+    transparent 100%
+  ) !important;
+}
+
+
+
+
+
+/* =========================================================
+   IMPORT FONTS
+========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* =========================================================
+   OVERRIDES FOR SPECIFIC COMPONENTS
+========================================================= */
+/* Fix DepthContainer white background */
+.relative.bg-white {
+  background: #1a1a1a !important;
+}
+
+/* Fix any white text that should be dark */
+.text-gray-900, .text-gray-800, .text-gray-700 {
+  color: var(--text-primary) !important;
+}
+
+/* Fix home page disaster */
+.bg-gradient-to-br {
+  background: #121212 !important;
+}
+
+/* Ensure all pages have dark background */
+#root, .App, main {
+  background: #121212 !important;
+}
+
+/* Fix minerals page children */
+.minerals-page > * {
+  background: #121212 !important;
+}
+
+/* Fix home page specific issues */
+section {
+  background: transparent !important;
+}
+
+.pt-20, .pt-28, .pt-32 {
+  padding-top: 5rem !important;
+}
+
+.max-w-6xl {
+  max-width: 72rem !important;
+}
+
+/* Fix grid gaps */
+.gap-8 {
+  gap: 2rem !important;
+}
+
+/* Fix image styling */
+img {
+  border-radius: 18px !important;
+}
+
+/* Fix mobile floating logo */
+.fixed.top-4.left-4 {
+  z-index: 9999 !important;
+}
+
+.fixed.top-4.left-4 img {
+  border-radius: 18px !important;
+  padding: 4px !important;
+  background: #1a1a1a !important;
+  box-shadow: var(--shadow-permanent) !important;
+}
+
+/* Add to your global CSS file */
+:root {
+  --icon-idle: #1a1a1a;
+  --icon-hover: #1a1a1a; /* Same as idle */
+  --icon-active: #1a1a1a; /* Same as idle */
+  --button-idle: #1a1a1a;
+  --button-hover: #1c1c1c; /* 1-2% brightness change only */
+  --button-active: #1a1a1a;
+}
+
+/* Remove all white defaults */
+button, 
+.icon, 
+[class*="icon"], 
+svg, 
+[fill="white"], 
+[stroke="white"] {
+  fill: var(--icon-idle) !important;
+  stroke: var(--icon-idle) !important;
+  color: var(--icon-idle) !important;
+}
+
+/* Hover states with minimal brightness change */
+button:hover,
+.icon:hover {
+  filter: brightness(102%);
+}
+
+/* Active state matches idle */
+button:active,
+.icon:active {
+  filter: brightness(100%);
+}
