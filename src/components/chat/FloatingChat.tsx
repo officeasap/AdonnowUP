@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 // ===============================
-// Adonnow chat service
+// Adonnow chat service - FIXED FOR MOBILE
 // ===============================
 class AdonnowChatService {
   private static instance: AdonnowChatService;
@@ -23,13 +23,45 @@ class AdonnowChatService {
     return AdonnowChatService.instance;
   }
 
+  // SMART WhatsApp deep link that works on all devices
   openWhatsAppDirectly(message: string) {
-    const encoded = encodeURIComponent(message);
-    window.open(
-      `https://wa.me/255772832777?text=${encoded}`,
-      '_blank',
-      'noopener,noreferrer'
-    );
+    const phoneNumber = '255772832777'; // Adonnow Trading WhatsApp
+    const encodedMessage = encodeURIComponent(message);
+    
+    // WhatsApp deep link URLs
+    const whatsappAppUrl = `whatsapp://send?phone=${phoneNumber}&text=${encodedMessage}`;
+    const whatsappWebUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    // For mobile devices - try to open WhatsApp app first
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      // Create an invisible iframe to test if WhatsApp is installed
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = whatsappAppUrl;
+      
+      // If WhatsApp opens, it will navigate away. If not, fallback to web.
+      iframe.onload = () => {
+        // If iframe is still here after 2 seconds, WhatsApp isn't installed
+        setTimeout(() => {
+          if (document.body.contains(iframe)) {
+            document.body.removeChild(iframe);
+            // Fallback to web WhatsApp
+            window.open(whatsappWebUrl, '_blank', 'noopener,noreferrer');
+          }
+        }, 2000);
+      };
+      
+      document.body.appendChild(iframe);
+      
+      // Also try direct navigation as fallback
+      setTimeout(() => {
+        window.location.href = whatsappAppUrl;
+      }, 100);
+      
+    } else {
+      // For desktop/laptop - open in new tab
+      window.open(whatsappWebUrl, '_blank', 'noopener,noreferrer');
+    }
   }
 }
 
@@ -203,7 +235,7 @@ const FloatingChat: React.FC = () => {
             </button>
 
             <p className="text-[10px] md:text-[11px] text-center text-[#d8ccb2]/70 px-2">
-              📱 Chat with Adonnow Trading Limited on WhatsApp
+              📱 Opens WhatsApp directly on your device
             </p>
           </div>
         </div>
