@@ -182,21 +182,24 @@ const FloatingChat: React.FC = () => {
               ))}
             </div>
 
-            {/* WhatsApp CTA - Mobile Optimized */}
+            {/* WhatsApp CTA - Mobile Optimized - FIXED TEXT COLOR */}
             <button
               onClick={handleSend}
               disabled={!message.trim()}
               className="w-full py-3 md:py-4 rounded-[14px] md:rounded-[16px]
-              bg-[#d8ccb2] text-[#121212]
-              font-bold text-xs md:text-sm
+              bg-[#d8ccb2] text-[#121212] font-bold text-xs md:text-sm
               shadow-[0_8px_24px_rgba(0,0,0,1)] md:shadow-[0_10px_28px_rgba(0,0,0,1)]
               flex items-center justify-center gap-2
               active:scale-95 transition-all duration-150"
-              style={{ height: '48px' }}
+              style={{ 
+                height: '48px',
+                color: '#121212 !important',
+                fontWeight: '700'
+              }}
             >
-              <Send className="w-3 h-3 md:w-4 md:h-4" />
-              <span>CHAT ON WHATSAPP</span>
-              <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
+              <Send className="w-3 h-3 md:w-4 md:h-4 text-[#121212]" />
+              <span style={{ color: '#121212' }}>CHAT ON WHATSAPP</span>
+              <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-[#121212]" />
             </button>
 
             <p className="text-[10px] md:text-[11px] text-center text-[#d8ccb2]/70 px-2">
