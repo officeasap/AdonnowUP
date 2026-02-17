@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import DepthContainer from "@/components/DepthContainer";
-import InstitutionalButton from "@/components/InstitutionalButton";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,15 +11,58 @@ const Contact = () => {
     message: ""
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{type: 'success' | 'error' | null, message: string}>({
+    type: null,
+    message: ''
+  });
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Institutional inquiry submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Inquiry submitted successfully! You will receive a confirmation email shortly.'
+        });
+        setFormData({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          mineralInterest: "",
+          message: ""
+        });
+      } else {
+        throw new Error(data.error || 'Submission failed');
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: error instanceof Error ? error.message : 'Failed to submit inquiry. Please try again or contact us directly.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -182,6 +223,19 @@ const Contact = () => {
           transition: all 0.1s ease;
         }
 
+        /* Status message styling */
+        .status-success {
+          background: rgba(21, 128, 61, 0.15);
+          border: 1px solid rgba(34, 197, 94, 0.3);
+          color: #86efac;
+        }
+        
+        .status-error {
+          background: rgba(185, 28, 28, 0.15);
+          border: 1px solid rgba(248, 113, 113, 0.3);
+          color: #fca5a5;
+        }
+
         /* Grid form layout */
         .contact-form-grid {
           display: grid;
@@ -267,7 +321,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="deep-press-input w-full"
-                    placeholder="institutional@email.com"
+                    placeholder="youremail@email.com"
                   />
                 </div>
 
@@ -281,7 +335,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className="deep-press-input w-full"
-                    placeholder="+254 XXX XXX XXX"
+                    placeholder="+1 XXX XXX XXXX"
                   />
                 </div>
               </div>
@@ -323,12 +377,34 @@ const Contact = () => {
                 />
               </div>
 
+              {/* Status Message */}
+              {submitStatus.type && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`p-4 rounded-lg ${submitStatus.type === 'success' ? 'status-success' : 'status-error'}`}
+                >
+                  {submitStatus.message}
+                </motion.div>
+              )}
+
               <div>
                 <button
                   type="submit"
-                  className="contact-submit-btn w-full"
+                  disabled={isSubmitting}
+                  className="contact-submit-btn w-full disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Submit Institutional Inquiry
+                  {isSubmitting ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                      </svg>
+                      Processing Inquiry...
+                    </span>
+                  ) : (
+                    'Submit Institutional Inquiry'
+                  )}
                 </button>
               </div>
             </form>
@@ -382,8 +458,8 @@ const Contact = () => {
                   Secure Correspondence
                 </h3>
                 <p className="text-text-secondary">
-                  <a href="mailto:info@adonnowtrading.com" className="text-text-highlight hover:text-text-primary transition-colors">
-                    info@adonnow.com
+                  <a href="mailto:inquiry@adonnow.com" className="text-text-highlight hover:text-text-primary transition-colors">
+                    inquiry@adonnow.com
                   </a><br />
                   <a href="tel:+254707513272" className="text-text-highlight hover:text-text-primary transition-colors">
                     +254 707 513 272 <br/>
