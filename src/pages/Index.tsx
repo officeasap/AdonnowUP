@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, TrendingUp, TrendingDown } from "lucide-react";
-import DepthContainer from "@/components/DepthContainer";
+import DepthContainer from "../components/DepthContainer";
 import { useNavigate } from "react-router-dom";
 
 const minerals = [
@@ -42,7 +42,7 @@ const minerals = [
 const heroImages = [
   { src: "/mineral-images/tanzanite5.png", alt: "Adonnow Trading — Tanzanite", type: "tanzanite" },
   { src: "/mineral-images/goldbars1.png", alt: "Adonnow Trading — Gold Bullion", type: "gold" },
-  { src: "/mineral-images/copper5.png", alt: "Adonnow Trading — Copper Cathodes", type: "copper" },
+  { src: "/mineral-images/copper3.png", alt: "Adonnow Trading — Copper Cathodes", type: "copper" },
   { src: "/mineral-images/coltan1.png", alt: "Adonnow Trading — Coltan Ore", type: "coltan" },
 ];
 

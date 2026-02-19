@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import DepthContainer from "@/components/DepthContainer";
+import DepthContainer from "../components/DepthContainer";
 import { useNavigate } from "react-router-dom";
 
 const mineralCategories = [
